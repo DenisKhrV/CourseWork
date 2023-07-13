@@ -15,8 +15,8 @@ public class Main {
 
         Employee.getListAll();
         Employee.sumSalary();
-        Employee.findMinSailary();
-        Employee.findMaxSailary();
+        Employee.findMinSalary();
+        Employee.findMaxSalary();
         Employee.findAverageSalary();
         Employee.getAllName();
 

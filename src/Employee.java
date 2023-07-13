@@ -56,7 +56,7 @@ public class Employee {
         return sum;
     }
 
-    public static void findMinSailary() {
+    public static void findMinSalary() {
         int min = Main.storage[0].salary;
         String name = Main.storage[0].name;
         for (Employee i : Main.storage) {
@@ -68,7 +68,7 @@ public class Employee {
         System.out.println("\nСотрудник с минимальной зарплатой: " + name+ ". Зарплата: "+ min);
 
     }
-    public static void findMaxSailary() {
+    public static void findMaxSalary() {
         int max = Main.storage[0].salary;
         String name = Main.storage[0].name;
         for (Employee i : Main.storage) {
