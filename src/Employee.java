@@ -109,9 +109,23 @@ public class Employee {
             }
         }
         if (min != 1_000_000_000) {
-            System.out.println("\nСотрудник с минимальной зарплатой: "+ name + ". Зарплата: "+ min);
+            System.out.println("\nСотрудник с минимальной зарплатой в отделе " +department+ ": "+ name + ". Зарплата: "+ min);
         }
-
+    }
+    public static void findMaxSalaryInDepartment(String department) {
+        double max = 0;
+        String name = "";
+        for (Employee i : Main.storage){
+            if (department.equals(i.department)) {
+                if (i.salary > max) {
+                    max = i.salary;
+                    name = i.name;
+                }
+            }
+        }
+        if (max != 0) {
+            System.out.println("\nСотрудник с максимальной зарплатой в отделе " +department+ ": "+ name + ". Зарплата: "+ max);
+        }
     }
 
 }

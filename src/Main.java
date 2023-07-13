@@ -21,7 +21,7 @@ public class Main {
         Employee.findAverageSalary();
         Employee.getAllName();
         Employee.findMinSalaryInDepartment("2");
-
+        Employee.findMaxSalaryInDepartment("2");
 
     }
 }
