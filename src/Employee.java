@@ -1,6 +1,6 @@
 public class Employee {
     private final String name;
-    private int salary;
+    private double salary;
     private String department;
     int id;
 
@@ -18,7 +18,7 @@ public class Employee {
         return this.name;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return this.salary;
     }
 
@@ -57,7 +57,7 @@ public class Employee {
     }
 
     public static void findMinSalary() {
-        int min = Main.storage[0].salary;
+        double min = Main.storage[0].salary;
         String name = Main.storage[0].name;
         for (Employee i : Main.storage) {
             if (i.salary < min) {
@@ -69,7 +69,7 @@ public class Employee {
 
     }
     public static void findMaxSalary() {
-        int max = Main.storage[0].salary;
+        double max = Main.storage[0].salary;
         String name = Main.storage[0].name;
         for (Employee i : Main.storage) {
             if (i.salary > max) {
@@ -90,4 +90,29 @@ public class Employee {
             System.out.println(i.name);
         }
     }
+    public static void indexSalary() {
+        double index = 1.05;
+        for (Employee i : Main.storage){
+            i.salary = i.salary * index;
+        }
+    }
+
+    public static void findMinSalaryInDepartment(String department) {
+        double min = 1_000_000_000;
+        String name = "";
+        for (Employee i : Main.storage){
+            if (department.equals(i.department)) {
+                if (i.salary < min) {
+                    min = i.salary;
+                    name = i.name;
+                }
+            }
+        }
+        if (min != 1_000_000_000) {
+            System.out.println("\nСотрудник с минимальной зарплатой: "+ name + ". Зарплата: "+ min);
+        }
+
+    }
+
 }
+

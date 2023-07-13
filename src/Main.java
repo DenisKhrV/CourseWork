@@ -1,9 +1,9 @@
 public class Main {
-    static  Employee[] storage = new Employee[10];
+        static  Employee[] storage = new Employee[10];
 
     public static void main(String[] args) {
         storage[0] = new Employee("Иванов Иван Иванович", 90000, "1");
-        storage[1] = new Employee("Иванов Иван Степанович", 105000, "2");
+        storage[1] = new Employee("Иванов Иван Степанович", 35000, "2");
         storage[2] = new Employee("Ким Дмитрий Дмитриевич", 125000, "3");
         storage[3] = new Employee("Петров Степан Семёнович", 70000, "4");
         storage[4] = new Employee("Медведев Александр Викторович", 120000, "2");
@@ -13,12 +13,14 @@ public class Main {
         storage[8] = new Employee("Пушкин Артём Фёдорович", 45000, "1");
         storage[9] = new Employee("Трутнев Сергей Петрович", 65000, "4");
 
+        Employee.indexSalary();
         Employee.getListAll();
         Employee.sumSalary();
         Employee.findMinSalary();
         Employee.findMaxSalary();
         Employee.findAverageSalary();
         Employee.getAllName();
+        Employee.findMinSalaryInDepartment("2");
 
 
     }
