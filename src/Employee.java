@@ -1,17 +1,19 @@
+import java.util.Objects;
+
 public class Employee {
+    private static long ID_COUNTER = 0;
     private final String name;
     private double salary;
     private String department;
-    int id;
+    private long id;
 
-    static  int counter = 0;
 
     public Employee(String name, int salary, String department) {
         this.name = name;
         this.salary = salary;
         this.department = department;
-        this.id = counter;
-        counter++;
+        this.id = ID_COUNTER;
+        ID_COUNTER++;
     }
 
     public String getName() {
@@ -26,11 +28,11 @@ public class Employee {
         return this.department;
     }
 
-    public int getId() {
+    public long getId() {
         return this.id;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
@@ -38,95 +40,24 @@ public class Employee {
         this.department = department;
     }
 
+    @Override
     public String toString() {
         return "ФИО: " + this.name + ". Зарплата:" + this.salary + ". Отдел: " + this.department;
     }
 
-    public static void getListAll() {
-        for (Employee employee : Main.storage) {
-            System.out.println(employee);
-        }
-    }
-    public static int sumSalary() {
-        int sum = 0;
-        for (Employee employee : Main.storage) {
-            sum += employee.salary;
-        }
-        System.out.println("\nСумма затрат на зарплаты в месяц: "+ sum);
-        return sum;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Double.compare(employee.salary, salary) == 0 && id == employee.id && Objects.equals(name, employee.name) && Objects.equals(department, employee.department);
     }
 
-    public static void findMinSalary() {
-        double min = Main.storage[0].salary;
-        String name = Main.storage[0].name;
-        for (Employee i : Main.storage) {
-            if (i.salary < min) {
-                min = i.salary;
-                name = i.name;
-            }
-        }
-        System.out.println("\nСотрудник с минимальной зарплатой: " + name+ ". Зарплата: "+ min);
-
-    }
-    public static void findMaxSalary() {
-        double max = Main.storage[0].salary;
-        String name = Main.storage[0].name;
-        for (Employee i : Main.storage) {
-            if (i.salary > max) {
-                max = i.salary;
-                name = i.name;
-            }
-        }
-        System.out.println("\nСотрудник с максимальной зарплатой: " + name+ ". Зарплата: "+ max);
-
-    }
-    public static void findAverageSalary() {
-        int averageSalary = sumSalary() / Main.storage.length;
-        System.out.println("\nСреднее значение зарплат сотрудников: " + averageSalary +"\n");
-    }
-
-    public static void getAllName() {
-        for (Employee i : Main.storage){
-            System.out.println(i.name);
-        }
-    }
-    public static void indexSalary() {
-        double index = 1.05;
-        for (Employee i : Main.storage){
-            i.salary = i.salary * index;
-        }
-    }
-
-    public static void findMinSalaryInDepartment(String department) {
-        double min = 1_000_000_000;
-        String name = "";
-        for (Employee i : Main.storage){
-            if (department.equals(i.department)) {
-                if (i.salary < min) {
-                    min = i.salary;
-                    name = i.name;
-                }
-            }
-        }
-        if (min != 1_000_000_000) {
-            System.out.println("\nСотрудник с минимальной зарплатой в отделе " +department+ ": "+ name + ". Зарплата: "+ min);
-        }
-    }
-    public static void findMaxSalaryInDepartment(String department) {
-        double max = 0;
-        String name = "";
-        for (Employee i : Main.storage){
-            if (department.equals(i.department)) {
-                if (i.salary > max) {
-                    max = i.salary;
-                    name = i.name;
-                }
-            }
-        }
-        if (max != 0) {
-            System.out.println("\nСотрудник с максимальной зарплатой в отделе " +department+ ": "+ name + ". Зарплата: "+ max);
-        }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, salary, department, id);
     }
 
 }
+
 
