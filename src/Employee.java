@@ -4,11 +4,11 @@ public class Employee {
     private static long ID_COUNTER = 0;
     private final String name;
     private double salary;
-    private String department;
-    private long id;
+    private int department;
+    private final long id;
 
 
-    public Employee(String name, int salary, String department) {
+    public Employee(String name, int salary, int department) {
         this.name = name;
         this.salary = salary;
         this.department = department;
@@ -24,7 +24,7 @@ public class Employee {
         return this.salary;
     }
 
-    public String getDepartment() {
+    public int getDepartment() {
         return this.department;
     }
 
@@ -36,7 +36,7 @@ public class Employee {
         this.salary = salary;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(int department) {
         this.department = department;
     }
 
