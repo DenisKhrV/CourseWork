@@ -29,6 +29,8 @@ public class Main {
         findAverageSalaryInDep("2");
         indexSalaryInDep(10,"2");
         printListAll("2");
+        employeesSalaryLower(50000);
+        employeesSalaryGreater(100000);
 
 
     }
@@ -158,6 +160,23 @@ public class Main {
             if (department.equals(employee.getDepartment())) {
                 double addition = employee.getSalary() / 100 * percent;
                 employee.setSalary(employee.getSalary() + addition);
+            }
+        }
+    }
+
+    private static void employeesSalaryLower(double salary) {
+        System.out.println();
+        for (Employee employee : storage) {
+            if (employee.getSalary() < salary) {
+                System.out.println("id "+ employee.getId()+ ". ФИО: "+employee.getName()+". Зарплата: "+employee.getSalary());
+            }
+        }
+    }
+    private static void employeesSalaryGreater(double salary) {
+        System.out.println();
+        for (Employee employee : storage) {
+            if (employee.getSalary() >= salary) {
+                System.out.println("id "+ employee.getId()+ ". ФИО: "+employee.getName()+". Зарплата: "+employee.getSalary());
             }
         }
     }
