@@ -15,18 +15,21 @@ public class Main {
         storage[8] = new Employee("Пушкин Артём Фёдорович", 45000, "1");
         storage[9] = new Employee("Трутнев Сергей Петрович", 65000, "4");
 
-//        indexSalary(5);
-//        printListAll();
-//        sumSalary();
-//        findMinSalary();
-//        findMaxSalary();
-//        findAverageSalary();
-//        printAllName();
-//        findMinSalaryInDepartment("2");
-//        findMaxSalaryInDepartment("2");
-//        sumSalaryInDepartment("2");
-//        printListAll("2");
+        indexSalary(5);
+        printListAll();
+        sumSalary();
+        findMinSalary();
+        findMaxSalary();
+        findAverageSalary();
+        printAllName();
+        findMinSalaryInDepartment("2");
+        findMaxSalaryInDepartment("2");
+        sumSalaryInDepartment("2");
+        System.out.println("\nСумма затрат на зарплаты в отделе в месяц: "+sumSalaryInDepartment("2")+"\n");
         findAverageSalaryInDep("2");
+        indexSalaryInDep(10,"2");
+        printListAll("2");
+
 
     }
 
@@ -90,10 +93,8 @@ public class Main {
         for (Employee i : Main.storage){
             if (department.equals(i.getDepartment())) {
                 sum += i.getSalary();
-                System.out.println(sum);
             }
         }
-        System.out.println("\nСумма затрат на зарплаты в отделе " + department+" в месяц: "+ sum);
         return sum;
     }
     private static void findMinSalaryInDepartment(String department) {
@@ -126,24 +127,39 @@ public class Main {
         }
         }
     private static void findAverageSalaryInDep(String department) {
-        double averageSalary = sumSalaryInDepartment(department) / countEmployeesInDep(department);
-        System.out.println("\nСреднее значение зарплат сотрудников в Отделе "+ department+ ": " + averageSalary +"\n");
-    }
-
-    private static int countEmployeesInDep(String department) {
         int count = 0;
-        for (Employee i : Main.storage){
+        for (Employee i : Main.storage) {
             if (department.equals(i.getDepartment())) {
                 count += 1;
             }
         }
-        return count;
+        double averageSalary = sumSalaryInDepartment(department) / count;
+        System.out.println("Среднее значение зарплат сотрудников в Отделе "+ department+ ": " + averageSalary +"\n");
     }
+
+//    private static int countEmployeesInDep(String department) {
+//        int count = 0;
+//        for (Employee i : Main.storage){
+//            if (department.equals(i.getDepartment())) {
+//                count += 1;
+//            }
+//        }
+//        return count;
+//    }
     private static void printListAll(String department) {
         for (Employee employee : Main.storage) {
             if (department.equals(employee.getDepartment())) {
-                System.out.println(employee);
+                System.out.println("ФИО "+ employee.getName()+". Зарплата: "+employee.getSalary());
             }
         }
     }
+    private static void indexSalaryInDep(double percent, String department) {
+        for (Employee employee : Main.storage){
+            if (department.equals(employee.getDepartment())) {
+                double addition = employee.getSalary() / 100 * percent;
+                employee.setSalary(employee.getSalary() + addition);
+            }
+        }
+    }
+
 }
